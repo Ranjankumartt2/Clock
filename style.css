@@ -1,0 +1,42 @@
+.container{
+	
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	margin-top: 0px;
+}
+
+body{
+	margin: 0px;
+	background-color: green;
+	padding-top: 5%;
+}
+
+#inner-card-body{
+	/*background-color: grey;*/
+	background: rgba(0, 0, 0, 0.03);
+}
+
+#outer-card-body{
+	background: rgba(0, 0, 0, 0.03);
+}
+
+select{
+	width: 40px!important;
+	text-align: center;
+	height: 50px;
+}
+
+.alert{
+	border-radius: 0px!important;
+}
+
+.inner-card{
+	border-width: 0px!important;
+}
+#laps li{
+	width: 70px;
+}
+#laps{
+	text-align: center;
+}

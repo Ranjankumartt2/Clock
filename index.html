@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<title>Clock</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<head>
+
+	<body>
+		<div class="container">
+			<div class="card text-center">
+				<div class="card-header">
+					<h1 class="class-title">Clock</h1>
+					<h5 id="localTime"></h5>
+				</div>
+
+				<div id="outer-card-body" class="card-body">
+					<div class="inner-card card text-center">
+						<div class="card-header">
+							<button type="button" onclick="show('clock')" class="btn btn-primary">World Clock</button>
+							<button type="button" onclick="show('timer')" class="btn btn-primary">Set Timer</button>
+							<button type="button" onclick="show('stopwatch')" class="btn btn-primary">Stopwatch</button>
+							<button type="button" onclick="show('alarm')" class="btn btn-primary">Set Alarm</button>
+						</div>
+
+						<div id="inner-card-body" class="card-body">
+
+							<!-- Home !-->
+							<div id="main-display" >
+								<!-- Main display -->
+								<div class="row">
+									<div id="tokyo" class="col-lg">
+										<div class="alert alert-success">
+											<h6>Tokyo</h6>
+											<h4 id="tokyoTime" class="alert-heading"></h4>
+											<p id="tokyoDate"></p>
+										</div>
+									</div>
+
+									<div id="new-york" class="col-lg">
+										<div class="alert alert-success">
+											<h6>New York</h6>
+											<h4 id="nyTime" class="alert-heading"></h4>
+											<p id="nyDate"></p>
+										</div>
+									</div>
+
+									<div id="london" class="col-lg">
+										<div class="alert alert-success">
+											<h6>London</h6>
+											<h4 id="londonTime" class="alert-heading"></h4>
+											<p id="londonDate"></p>
+										</div>
+									</div>
+
+									<div id="accra" class="col-lg">
+										<div class="alert alert-success">
+											<h6>Accra</h6>
+											<h4 id="accraTime" class="alert-heading"></h4>
+											<p id="accraDate"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Clock !-->
+							<div id="clock" class="world-clock" style="display:none;">
+								<div class="row">
+									<div id="tokyo" class="col-lg">
+										<div class="alert alert-success">
+											<h6>Tokyo</h6>
+											<h4 id="tokyoTime" class="alert-heading"></h4>
+											<p id="tokyoDate"></p>
+										</div>
+									</div>
+
+									<div id="new-york" class="col-lg">
+										<div class="alert alert-success">
+											<h6>New York</h6>
+											<h4 id="nyTime" class="alert-heading"></h4>
+											<p id="nyDate"></p>
+										</div>
+									</div>
+
+									<div id="london" class="col-lg">
+										<div class="alert alert-success">
+											<h6>London</h6>
+											<h4 id="londonTime" class="alert-heading"></h4>
+											<p id="londonDate"></p>
+										</div>
+									</div>
+
+									<div id="accra" class="col-lg">
+										<div class="alert alert-success">
+											<h6>Accra</h6>
+											<h4 id="accraTime" class="alert-heading"></h4>
+											<p id="accraDate"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Timer !-->
+							<div id="timer" style="display:none;">
+								<div class="alert alert-success">
+									<div id="timerHome">
+										Timer goes here
+									</div>
+
+									<div id="timerDropDown" style="display: none;">
+										<div class="input-group mb-3">
+											<select id="hours"></select>
+											<select id="minutes"></select>
+											<select id="seconds"></select>
+										</div>
+									</div>
+
+									<div id="timerCountDown" style="display: none;"></div>
+									<hr>
+
+									<input onClick="startTimer()" type="button" class="btn badge-pill btn-success btn-sm" value="Start"/>
+									<input id="pauseButton" onClick="pauseTimer()" type="button" class="btn badge-pill btn-sm btn-warning" value="Pause"/>
+									<input onClick="cancelTimer()" type="button" class="btn badge-pill btn-sm btn-danger" value="Cancel"/>
+								</div>
+							</div>
+
+
+							<!-- Stopwatch !-->
+							<div id="stopwatch" style="display:none;">
+								<div id="laps-wrapper">
+									<div>
+										Time Lapsed
+										<div id="stopwatch-counter">
+											00:00:00
+										</div>
+									</div>
+								
+									<ol id="laps">
+										<!-- Laps go in here !-->
+									</ol>
+								</div>
+
+								<div id="stopwatch-buttons">
+									<input onClick="lap()" type="button" value="Lap"/>
+									<input onClick="startStopWatch()" type="button" value="Start"/>
+								</div>
+							</div>
+
+							<!-- Alarm !-->
+							<div id="alarm" style="display:none;">
+								<h2>Set Alarm</h2>
+								<label for="alarm-hour">Hours:</label>
+								<input type="number" id="alarm-hour" min="0" max="23">
+								<label for="alarm-minute">Minutes:</label>
+								<input type="number" id="alarm-minute" min="0" max="59">
+								<label for="alarm-second">Seconds:</label>
+								<input type="number" id="alarm-second" min="0" max="59">
+								<button onclick="setAlarm()">Set Alarm</button>
+								<audio id="alarm-sound">
+									<source src="/alarm-clock.mp3" type="audio/mpeg">
+								</audio>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				
+				<div class="card-footer text-muted">	
+					<h6 id="localDate"></h6>
+				</div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	</body>
+</html>
